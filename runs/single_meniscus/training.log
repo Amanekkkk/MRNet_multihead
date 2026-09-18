@@ -1,0 +1,66 @@
+2026-09-18 02:22:36  Command: train.py --out_dir runs/single_meniscus --workers 6 --tasks meniscus --max_epochs 100 --patience 20 --min_epochs 30 --lr 1e-5 --min_lr 1e-7
+2026-09-18 02:22:36  Args: {'data_dir': '/home/amanali/Desktop/MRNet-v1.0', 'tasks': 'meniscus', 'out_dir': 'runs/single_meniscus', 'max_epochs': 100, 'patience': 20, 'min_epochs': 30, 'lr': 1e-05, 'min_lr': 1e-07, 'weight_decay': 1e-05, 'augment': True, 'pos_weight': True, 'no_amp': False, 'cudnn_benchmark': False, 'workers': 6, 'seed': 42, 'limit': None, 'n_bootstrap': 2000}
+2026-09-18 02:22:37  Device: cuda (NVIDIA GeForce RTX 5060 Ti) | AMP: True | torch 2.9.1+cu128
+2026-09-18 02:22:37  Split mode: OFFICIAL -- 1130 train exams split 85/15 into train/val; official 120-exam validation set used as held-out TEST set.
+2026-09-18 02:22:37  Stratification: {'train_vs_val': 'joint(abnormal,acl,meniscus)'}
+2026-09-18 02:22:37    train: n= 960 | positives: abnormal=776, acl=177, meniscus=337 | sagittal->coronal substitutions: 0
+2026-09-18 02:22:37    val  : n= 170 | positives: abnormal=137, acl=31, meniscus=60 | sagittal->coronal substitutions: 0
+2026-09-18 02:22:37    test : n= 120 | positives: abnormal=95, acl=54, meniscus=52 | sagittal->coronal substitutions: 0
+2026-09-18 02:22:37  Augmentation: {'max_rotate_deg': 10.0, 'max_translate_frac': 0.05, 'scale_range': [0.95, 1.05], 'contrast_factor_range': [0.9, 1.1], 'brightness_offset_range': [-0.1, 0.1], 'hflip_p': 0.5, 'hflip_rule': 'one decision per exam; axial & coronal flipped along the left-right image axis; sagittal not flipped in-plane (its left-right axis is the slice axis, and slice order is irrelevant under max-pooling)'}
+2026-09-18 02:22:37  pos_weight (neg/pos on train): {'meniscus': 1.8486646884272997}
+2026-09-18 02:22:37  Model: shared ResNet50, tasks=['meniscus'] | params total=25,278,785 trainable=23,833,857 frozen=1,444,928
+2026-09-18 02:24:59  Epoch 001/100 | lr 1.00e-05 | train loss 0.9017 AUC 0.5154 [men=0.515] | val loss 0.8988 AUC 0.6555 [men=0.655] | 142s (train 128s) | peak mem 2828 MB
+2026-09-18 02:24:59    -> new best val mean AUC 0.6555 (epoch 1), checkpoint saved
+2026-09-18 02:27:20  Epoch 002/100 | lr 1.00e-05 | train loss 0.8855 AUC 0.5831 [men=0.583] | val loss 0.9335 AUC 0.6369 [men=0.637] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 02:29:41  Epoch 003/100 | lr 9.99e-06 | train loss 0.7957 AUC 0.7411 [men=0.741] | val loss 0.9894 AUC 0.6497 [men=0.650] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 02:32:02  Epoch 004/100 | lr 9.98e-06 | train loss 0.6877 AUC 0.8183 [men=0.818] | val loss 2.5404 AUC 0.6036 [men=0.604] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 02:34:23  Epoch 005/100 | lr 9.96e-06 | train loss 0.5858 AUC 0.8738 [men=0.874] | val loss 1.6373 AUC 0.6640 [men=0.664] | 141s (train 127s) | peak mem 2829 MB
+2026-09-18 02:34:23    -> new best val mean AUC 0.6640 (epoch 5), checkpoint saved
+2026-09-18 02:36:44  Epoch 006/100 | lr 9.94e-06 | train loss 0.4572 AUC 0.9283 [men=0.928] | val loss 2.4365 AUC 0.6496 [men=0.650] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 02:39:05  Epoch 007/100 | lr 9.91e-06 | train loss 0.3621 AUC 0.9526 [men=0.953] | val loss 2.3889 AUC 0.5955 [men=0.595] | 141s (train 127s) | peak mem 2827 MB
+2026-09-18 02:41:26  Epoch 008/100 | lr 9.88e-06 | train loss 0.2659 AUC 0.9742 [men=0.974] | val loss 2.9774 AUC 0.6640 [men=0.664] | 141s (train 127s) | peak mem 2826 MB
+2026-09-18 02:43:47  Epoch 009/100 | lr 9.84e-06 | train loss 0.2010 AUC 0.9865 [men=0.987] | val loss 2.4086 AUC 0.6426 [men=0.643] | 141s (train 127s) | peak mem 2827 MB
+2026-09-18 02:46:08  Epoch 010/100 | lr 9.80e-06 | train loss 0.1689 AUC 0.9908 [men=0.991] | val loss 5.0307 AUC 0.5551 [men=0.555] | 141s (train 127s) | peak mem 2826 MB
+2026-09-18 02:48:29  Epoch 011/100 | lr 9.76e-06 | train loss 0.1290 AUC 0.9939 [men=0.994] | val loss 3.7448 AUC 0.6560 [men=0.656] | 141s (train 127s) | peak mem 2827 MB
+2026-09-18 02:50:50  Epoch 012/100 | lr 9.71e-06 | train loss 0.1179 AUC 0.9953 [men=0.995] | val loss 6.0912 AUC 0.6611 [men=0.661] | 141s (train 127s) | peak mem 2830 MB
+2026-09-18 02:53:11  Epoch 013/100 | lr 9.65e-06 | train loss 0.1135 AUC 0.9952 [men=0.995] | val loss 2.1451 AUC 0.7108 [men=0.711] | 141s (train 127s) | peak mem 2829 MB
+2026-09-18 02:53:11    -> new best val mean AUC 0.7108 (epoch 13), checkpoint saved
+2026-09-18 02:55:32  Epoch 014/100 | lr 9.59e-06 | train loss 0.0634 AUC 0.9989 [men=0.999] | val loss 2.4986 AUC 0.6521 [men=0.652] | 141s (train 127s) | peak mem 2830 MB
+2026-09-18 02:57:53  Epoch 015/100 | lr 9.53e-06 | train loss 0.0322 AUC 0.9999 [men=1.000] | val loss 3.8541 AUC 0.6896 [men=0.690] | 141s (train 127s) | peak mem 2830 MB
+2026-09-18 03:00:14  Epoch 016/100 | lr 9.46e-06 | train loss 0.0884 AUC 0.9972 [men=0.997] | val loss 4.9957 AUC 0.6854 [men=0.685] | 141s (train 127s) | peak mem 2832 MB
+2026-09-18 03:02:35  Epoch 017/100 | lr 9.39e-06 | train loss 0.0862 AUC 0.9970 [men=0.997] | val loss 4.8255 AUC 0.6707 [men=0.671] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 03:04:55  Epoch 018/100 | lr 9.31e-06 | train loss 0.0524 AUC 0.9978 [men=0.998] | val loss 2.7744 AUC 0.6793 [men=0.679] | 141s (train 127s) | peak mem 2833 MB
+2026-09-18 03:07:16  Epoch 019/100 | lr 9.23e-06 | train loss 0.0444 AUC 0.9993 [men=0.999] | val loss 2.9914 AUC 0.6676 [men=0.668] | 141s (train 127s) | peak mem 2831 MB
+2026-09-18 03:09:37  Epoch 020/100 | lr 9.14e-06 | train loss 0.0987 AUC 0.9962 [men=0.996] | val loss 5.3991 AUC 0.6236 [men=0.624] | 141s (train 127s) | peak mem 2832 MB
+2026-09-18 03:11:58  Epoch 021/100 | lr 9.05e-06 | train loss 0.0599 AUC 0.9976 [men=0.998] | val loss 5.9848 AUC 0.6308 [men=0.631] | 141s (train 127s) | peak mem 2825 MB
+2026-09-18 03:14:19  Epoch 022/100 | lr 8.96e-06 | train loss 0.0151 AUC 1.0000 [men=1.000] | val loss 5.2552 AUC 0.6273 [men=0.627] | 141s (train 127s) | peak mem 2830 MB
+2026-09-18 03:16:40  Epoch 023/100 | lr 8.86e-06 | train loss 0.0650 AUC 0.9984 [men=0.998] | val loss 8.3166 AUC 0.6056 [men=0.606] | 141s (train 127s) | peak mem 2829 MB
+2026-09-18 03:19:01  Epoch 024/100 | lr 8.76e-06 | train loss 0.0284 AUC 0.9998 [men=1.000] | val loss 4.6717 AUC 0.6244 [men=0.624] | 141s (train 127s) | peak mem 2831 MB
+2026-09-18 03:21:22  Epoch 025/100 | lr 8.66e-06 | train loss 0.0180 AUC 0.9999 [men=1.000] | val loss 5.7741 AUC 0.6592 [men=0.659] | 141s (train 127s) | peak mem 2832 MB
+2026-09-18 03:23:43  Epoch 026/100 | lr 8.55e-06 | train loss 0.0506 AUC 0.9987 [men=0.999] | val loss 6.7319 AUC 0.6456 [men=0.646] | 141s (train 127s) | peak mem 2826 MB
+2026-09-18 03:26:04  Epoch 027/100 | lr 8.44e-06 | train loss 0.0302 AUC 0.9997 [men=1.000] | val loss 4.8679 AUC 0.6730 [men=0.673] | 141s (train 127s) | peak mem 2832 MB
+2026-09-18 03:28:24  Epoch 028/100 | lr 8.32e-06 | train loss 0.0250 AUC 0.9997 [men=1.000] | val loss 5.9483 AUC 0.6514 [men=0.651] | 141s (train 127s) | peak mem 2831 MB
+2026-09-18 03:30:45  Epoch 029/100 | lr 8.21e-06 | train loss 0.0146 AUC 1.0000 [men=1.000] | val loss 5.5376 AUC 0.6521 [men=0.652] | 141s (train 127s) | peak mem 2823 MB
+2026-09-18 03:33:06  Epoch 030/100 | lr 8.08e-06 | train loss 0.0608 AUC 0.9988 [men=0.999] | val loss 6.4554 AUC 0.6108 [men=0.611] | 141s (train 127s) | peak mem 2831 MB
+2026-09-18 03:35:27  Epoch 031/100 | lr 7.96e-06 | train loss 0.0521 AUC 0.9985 [men=0.999] | val loss 6.2348 AUC 0.6479 [men=0.648] | 141s (train 127s) | peak mem 2826 MB
+2026-09-18 03:37:48  Epoch 032/100 | lr 7.83e-06 | train loss 0.0178 AUC 0.9999 [men=1.000] | val loss 3.7286 AUC 0.6407 [men=0.641] | 141s (train 127s) | peak mem 2831 MB
+2026-09-18 03:40:09  Epoch 033/100 | lr 7.70e-06 | train loss 0.0314 AUC 0.9997 [men=1.000] | val loss 6.6704 AUC 0.6227 [men=0.623] | 141s (train 127s) | peak mem 2829 MB
+2026-09-18 03:40:09  Early stopping: no val mean AUC improvement for 20 epochs (best epoch 13, AUC 0.7108)
+2026-09-18 03:40:09  Loading best checkpoint (epoch 13) for final evaluation
+2026-09-18 03:40:33  TEST results (best checkpoint, evaluated once):
+2026-09-18 03:40:33    AUC meniscus  0.6438  95% CI [0.5392, 0.7434]
+2026-09-18 03:40:33    AUC mean      0.6438  95% CI [0.5392, 0.7434]
+2026-09-18 03:40:33    meniscus  @0.5: sens 0.596 spec 0.529 | @Youden(val)=0.692: sens 0.596 spec 0.574
+2026-09-18 03:40:33  Wrote runs/single_meniscus/results.json | total time 78.0 min
+2026-09-18 03:45:13  evaluate_test.py: deferred TEST evaluation of /home/amanali/Desktop/MRNet-v1.0/runs/single_meniscus
+2026-09-18 03:45:13  Split mode: OFFICIAL -- 1130 train exams split 85/15 into train/val; official 120-exam validation set used as held-out TEST set.
+2026-09-18 03:45:13  Stratification: {'train_vs_val': 'joint(abnormal,acl,meniscus)'}
+2026-09-18 03:45:13    train: n= 960 | positives: abnormal=776, acl=177, meniscus=337 | sagittal->coronal substitutions: 0
+2026-09-18 03:45:13    val  : n= 170 | positives: abnormal=137, acl=31, meniscus=60 | sagittal->coronal substitutions: 0
+2026-09-18 03:45:13    test : n= 120 | positives: abnormal=95, acl=54, meniscus=52 | sagittal->coronal substitutions: 0
+2026-09-18 03:45:14  Loaded best checkpoint (epoch 13)
+2026-09-18 03:45:38  TEST results (best checkpoint, evaluated once):
+2026-09-18 03:45:38    AUC meniscus  0.6438  95% CI [0.5392, 0.7434]
+2026-09-18 03:45:38    AUC mean      0.6438  95% CI [0.5392, 0.7434]
+2026-09-18 03:45:38    meniscus  @0.5: sens 0.596 spec 0.529 | @Youden(val)=0.692: sens 0.596 spec 0.574
+2026-09-18 03:45:38  Updated /home/amanali/Desktop/MRNet-v1.0/runs/single_meniscus/results.json

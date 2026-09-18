@@ -1,0 +1,46 @@
+[2026-09-17 22:20:54] run_experiments.sh started (pid 203948) in /home/amanali/Desktop/MRNet-v1.0
+[2026-09-17 22:20:54] python: /home/amanali/.pyenv/shims/python3 | torch 2.9.1+cu128 cuda True
+NVIDIA GeForce RTX 5060 Ti, 545 MiB, 8151 MiB, 0 %
+[2026-09-17 22:20:57] dataset mode: OFFICIAL (official 120-exam validation set = test set)
+[2026-09-17 22:20:57] SKIP bench_no_amp (runs/bench_no_amp/results.json exists)
+[2026-09-17 22:20:57] SKIP bench_amp (runs/bench_amp/results.json exists)
+[2026-09-17 22:20:57] START multitask: /home/amanali/.pyenv/shims/python3 -u train.py --out_dir runs/multitask --tasks abnormal,acl,meniscus --max_epochs 100 --patience 20 --min_epochs 30 --lr 1e-5 --min_lr 1e-7 
+[2026-09-17 23:44:07] DONE  multitask in 83 min
+2026-09-17 23:44:06    AUC abnormal  0.7747  95% CI [0.6703, 0.8750]
+2026-09-17 23:44:06    AUC acl       0.9141  95% CI [0.8587, 0.9583]
+2026-09-17 23:44:06    AUC meniscus  0.6445  95% CI [0.5445, 0.7400]
+2026-09-17 23:44:06    AUC mean      0.7778  95% CI [0.7128, 0.8359]
+[2026-09-17 23:44:07] START single_abnormal: /home/amanali/.pyenv/shims/python3 -u train.py --out_dir runs/single_abnormal --tasks abnormal --max_epochs 100 --patience 20 --min_epochs 30 --lr 1e-5 --min_lr 1e-7 
+[2026-09-18 00:57:33] DONE  single_abnormal in 73 min
+2026-09-18 00:57:32    AUC abnormal  0.8829  95% CI [0.8027, 0.9514]
+2026-09-18 00:57:32    AUC mean      0.8829  95% CI [0.8027, 0.9514]
+[2026-09-18 00:57:33] START single_acl: /home/amanali/.pyenv/shims/python3 -u train.py --out_dir runs/single_acl --tasks acl --max_epochs 100 --patience 20 --min_epochs 30 --lr 1e-5 --min_lr 1e-7 
+run_experiments.sh: line 47: 218388 Aborted                    (core dumped) "$PY" -u train.py --out_dir "$out" --workers "$WORKERS" "$@" "${EXTRA_ARGS[@]}" > "$out/stdout.log" 2>&1
+[2026-09-18 02:22:34] FAIL  single_acl (exit code 134) after 85 min -- see runs/single_acl/stdout.log
+2026-09-18 01:56:20  Epoch 025/100 | lr 8.66e-06 | train loss 0.0061 AUC 1.0000 [acl=1.000] | val loss 9.8073 AUC 0.6375 [acl=0.638] | 141s (train 127s) | peak mem 2830 MB
+2026-09-18 01:58:41  Epoch 026/100 | lr 8.55e-06 | train loss 0.0323 AUC 0.9998 [acl=1.000] | val loss 3.9735 AUC 0.7734 [acl=0.773] | 141s (train 127s) | peak mem 2827 MB
+2026-09-18 02:01:02  Epoch 027/100 | lr 8.44e-06 | train loss 0.0186 AUC 0.9999 [acl=1.000] | val loss 4.9373 AUC 0.7379 [acl=0.738] | 141s (train 127s) | peak mem 2827 MB
+2026-09-18 02:03:22  Epoch 028/100 | lr 8.32e-06 | train loss 0.0272 AUC 0.9998 [acl=1.000] | val loss 4.4424 AUC 0.6905 [acl=0.691] | 141s (train 127s) | peak mem 2834 MB
+2026-09-18 02:05:43  Epoch 029/100 | lr 8.21e-06 | train loss 0.0290 AUC 0.9996 [acl=1.000] | val loss 3.5447 AUC 0.7539 [acl=0.754] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 02:08:04  Epoch 030/100 | lr 8.08e-06 | train loss 0.0300 AUC 0.9998 [acl=1.000] | val loss 5.8453 AUC 0.7338 [acl=0.734] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 02:10:25  Epoch 031/100 | lr 7.96e-06 | train loss 0.0115 AUC 1.0000 [acl=1.000] | val loss 4.0060 AUC 0.7749 [acl=0.775] | 141s (train 127s) | peak mem 2828 MB
+2026-09-18 02:12:46  Epoch 032/100 | lr 7.83e-06 | train loss 0.0064 AUC 1.0000 [acl=1.000] | val loss 5.8599 AUC 0.6703 [acl=0.670] | 141s (train 127s) | peak mem 2829 MB
+2026-09-18 02:15:07  Epoch 033/100 | lr 7.70e-06 | train loss 0.0020 AUC 1.0000 [acl=1.000] | val loss 4.0544 AUC 0.7473 [acl=0.747] | 141s (train 127s) | peak mem 2826 MB
+2026-09-18 02:17:27  Epoch 034/100 | lr 7.57e-06 | train loss 0.0029 AUC 1.0000 [acl=1.000] | val loss 7.7987 AUC 0.6853 [acl=0.685] | 141s (train 127s) | peak mem 2829 MB
+2026-09-18 02:19:48  Epoch 035/100 | lr 7.43e-06 | train loss 0.0211 AUC 0.9999 [acl=1.000] | val loss 8.0327 AUC 0.6597 [acl=0.660] | 141s (train 127s) | peak mem 2835 MB
+2026-09-18 02:22:09  Epoch 036/100 | lr 7.30e-06 | train loss 0.0362 AUC 0.9998 [acl=1.000] | val loss 3.6276 AUC 0.7827 [acl=0.783] | 141s (train 127s) | peak mem 2827 MB
+2026-09-18 02:22:09  Early stopping: no val mean AUC improvement for 20 epochs (best epoch 16, AUC 0.8104)
+2026-09-18 02:22:09  Loading best checkpoint (epoch 16) for final evaluation
+2026-09-18 02:22:33  TEST results (best checkpoint, evaluated once):
+2026-09-18 02:22:33    AUC acl       0.8179  95% CI [0.7371, 0.8836]
+2026-09-18 02:22:33    AUC mean      0.8179  95% CI [0.7371, 0.8836]
+2026-09-18 02:22:33    acl       @0.5: sens 0.889 spec 0.606 | @Youden(val)=0.854: sens 0.833 spec 0.667
+2026-09-18 02:22:34  Wrote runs/single_acl/results.json | total time 85.0 min
+free(): invalid next size (normal)
+[2026-09-18 02:22:34] START single_meniscus: /home/amanali/.pyenv/shims/python3 -u train.py --out_dir runs/single_meniscus --tasks meniscus --max_epochs 100 --patience 20 --min_epochs 30 --lr 1e-5 --min_lr 1e-7 
+[2026-09-18 03:40:34] DONE  single_meniscus in 78 min
+2026-09-18 03:40:33    AUC meniscus  0.6438  95% CI [0.5392, 0.7434]
+2026-09-18 03:40:33    AUC mean      0.6438  95% CI [0.5392, 0.7434]
+bench_no_amp: amp=False peak allocated 4609 MB, reserved 6704 MB, mean train s/exam 0.274
+bench_amp: amp=True peak allocated 2597 MB, reserved 2794 MB, mean train s/exam 0.156
+[2026-09-18 03:40:37] finished with FAILURES: single_acl

@@ -1,0 +1,241 @@
+{
+  "split_mode": "official",
+  "stratification": {
+    "train_vs_val": "joint(abnormal,acl,meniscus)"
+  },
+  "split_sizes": {
+    "train": 960,
+    "val": 170,
+    "test": 120
+  },
+  "positives": {
+    "train": {
+      "abnormal": 776,
+      "acl": 177,
+      "meniscus": 337
+    },
+    "val": {
+      "abnormal": 137,
+      "acl": 31,
+      "meniscus": 60
+    },
+    "test": {
+      "abnormal": 95,
+      "acl": 54,
+      "meniscus": 52
+    }
+  },
+  "sagittal_substituted": {
+    "train": 0,
+    "val": 0,
+    "test": 0
+  },
+  "tasks": [
+    "abnormal",
+    "acl",
+    "meniscus"
+  ],
+  "params": {
+    "total": 25279299,
+    "trainable": 23834371,
+    "frozen": 1444928
+  },
+  "pos_weight": {
+    "abnormal": 0.23711340206185566,
+    "acl": 4.423728813559322,
+    "meniscus": 1.8486646884272997
+  },
+  "loss_definition": "mean over tasks of BCEWithLogits(logit_t, y_t; pos_weight_t), pos_weight_t = n_neg_t / n_pos_t on the train split (1.0 if --no_pos_weight); batch size 1 exam",
+  "early_stopping_rule": "select the epoch with the highest validation mean AUC (mean over the trained tasks); stop when it has not improved for `patience` consecutive epochs (only from epoch `min_epochs` onward) or at max_epochs",
+  "bn_handling": "conv1/bn1/layer1/layer2 frozen: no gradient and BatchNorm kept in eval mode (ImageNet running statistics). BatchNorm in layer3/layer4 trains normally, with batch statistics over the slices of one plane of one exam; eval mode uses running statistics.",
+  "augmentation": {
+    "max_rotate_deg": 10.0,
+    "max_translate_frac": 0.05,
+    "scale_range": [
+      0.95,
+      1.05
+    ],
+    "contrast_factor_range": [
+      0.9,
+      1.1
+    ],
+    "brightness_offset_range": [
+      -0.1,
+      0.1
+    ],
+    "hflip_p": 0.5,
+    "hflip_rule": "one decision per exam; axial & coronal flipped along the left-right image axis; sagittal not flipped in-plane (its left-right axis is the slice axis, and slice order is irrelevant under max-pooling)"
+  },
+  "input_preprocessing": "per-volume min-max to [0,1], grey->3 channels, ImageNet mean/std normalisation, 256x256",
+  "best_epoch": 15,
+  "epochs_run": 35,
+  "stopped_early": true,
+  "val_at_best_epoch": {
+    "loss": 1.3922356882990083,
+    "aucs": {
+      "abnormal": 0.7262773722627738,
+      "acl": 0.910304014852634,
+      "meniscus": 0.6677272727272727
+    },
+    "mean_auc": 0.7681028866142269
+  },
+  "val_best_checkpoint_reeval": {
+    "loss": 1.3922356882990083,
+    "aucs": {
+      "abnormal": 0.7262773722627738,
+      "acl": 0.910304014852634,
+      "meniscus": 0.6677272727272727
+    },
+    "mean_auc": 0.7681028866142269
+  },
+  "test": {
+    "loss": 1.7543652569946668,
+    "n": 120,
+    "auc": {
+      "abnormal": {
+        "auc": 0.7747368421052631,
+        "ci95": [
+          0.6702598079356807,
+          0.875
+        ],
+        "n_valid_resamples": 2000
+      },
+      "acl": {
+        "auc": 0.9141414141414141,
+        "ci95": [
+          0.858662063086104,
+          0.9582853020333889
+        ],
+        "n_valid_resamples": 2000
+      },
+      "meniscus": {
+        "auc": 0.6445135746606335,
+        "ci95": [
+          0.5445365652207158,
+          0.7399569104046092
+        ],
+        "n_valid_resamples": 2000
+      },
+      "mean": {
+        "auc": 0.7777972769691036,
+        "ci95": [
+          0.7128107815147332,
+          0.8358724940010535
+        ],
+        "n_valid_resamples": 2000
+      }
+    },
+    "thresholds": {
+      "abnormal": {
+        "at_0.5": {
+          "threshold": 0.5,
+          "sensitivity": 0.8631578947368421,
+          "specificity": 0.48,
+          "tp": 82,
+          "fn": 13,
+          "tn": 12,
+          "fp": 13
+        },
+        "at_val_youden": {
+          "threshold": 0.820900559425354,
+          "sensitivity": 0.6842105263157895,
+          "specificity": 0.72,
+          "tp": 65,
+          "fn": 30,
+          "tn": 18,
+          "fp": 7
+        },
+        "val_youden_threshold": 0.820900559425354
+      },
+      "acl": {
+        "at_0.5": {
+          "threshold": 0.5,
+          "sensitivity": 0.6666666666666666,
+          "specificity": 0.8939393939393939,
+          "tp": 36,
+          "fn": 18,
+          "tn": 59,
+          "fp": 7
+        },
+        "at_val_youden": {
+          "threshold": 0.02655657008290291,
+          "sensitivity": 0.8703703703703703,
+          "specificity": 0.8333333333333334,
+          "tp": 47,
+          "fn": 7,
+          "tn": 55,
+          "fp": 11
+        },
+        "val_youden_threshold": 0.02655657008290291
+      },
+      "meniscus": {
+        "at_0.5": {
+          "threshold": 0.5,
+          "sensitivity": 0.46153846153846156,
+          "specificity": 0.6617647058823529,
+          "tp": 24,
+          "fn": 28,
+          "tn": 45,
+          "fp": 23
+        },
+        "at_val_youden": {
+          "threshold": 0.6147987842559814,
+          "sensitivity": 0.4423076923076923,
+          "specificity": 0.7058823529411765,
+          "tp": 23,
+          "fn": 29,
+          "tn": 48,
+          "fp": 20
+        },
+        "val_youden_threshold": 0.6147987842559814
+      }
+    },
+    "bootstrap": {
+      "n_resamples": 2000,
+      "seed": 42,
+      "method": "percentile, resampling exams with replacement, 95%"
+    }
+  },
+  "test_pending": false,
+  "timing": {
+    "mean_epoch_time_s": 141.70073956080844,
+    "mean_epoch_time_s_excl_first": 141.68032511542825,
+    "mean_train_time_s": 127.61048861912319,
+    "mean_val_time_s": 14.090250941685268,
+    "mean_train_s_per_exam": 0.13292759231158666,
+    "total_wall_time_s": 4986.548918008804
+  },
+  "memory": {
+    "peak_gpu_mem_mb_train_epochs_max": 2833.16162109375,
+    "peak_gpu_mem_mb_train_epochs_mean": 2828.879478236607,
+    "peak_gpu_reserved_mb_max": 3088.0,
+    "peak_gpu_mem_mb_final_eval": 977.86328125,
+    "measure": "torch.cuda.max_memory_allocated, reset at the start of every epoch (train+val)"
+  },
+  "amp": true,
+  "environment": {
+    "torch": "2.9.1+cu128",
+    "gpu": "NVIDIA GeForce RTX 5060 Ti",
+    "cudnn_benchmark": false
+  },
+  "args": {
+    "data_dir": "/home/amanali/Desktop/MRNet-v1.0",
+    "tasks": "abnormal,acl,meniscus",
+    "out_dir": "runs/multitask",
+    "max_epochs": 100,
+    "patience": 20,
+    "min_epochs": 30,
+    "lr": 1e-05,
+    "min_lr": 1e-07,
+    "weight_decay": 1e-05,
+    "augment": true,
+    "pos_weight": true,
+    "no_amp": false,
+    "cudnn_benchmark": false,
+    "workers": 6,
+    "seed": 42,
+    "limit": null,
+    "n_bootstrap": 2000
+  },
+  "test_evaluated_by": "evaluate_test.py (deferred; checkpoint and train/val split unchanged)"
+}

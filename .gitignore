@@ -1,0 +1,29 @@
+# MRNet imaging data (Stanford research-use agreement — not redistributable)
+train/
+val/
+valid/
+*.npy
+# label CSVs ship with the dataset, not with this code
+train-*.csv
+train_*.csv
+val-*.csv
+val_*.csv
+valid-*.csv
+valid_*.csv
+
+# model checkpoints (~97 MB each)
+*.pt
+
+# manuscript and local working files
+*.docx
+~$*
+.~lock.*
+_backup_v1/
+checkpoints/
+figures/
+EJMCA template/
+generate_paper.py
+__pycache__/
+*.pyc
+.idea/
+.claude/

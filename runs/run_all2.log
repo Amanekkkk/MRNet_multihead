@@ -1,0 +1,19 @@
+[2026-09-18 13:09:51] START single_abnormal_b8
+[2026-09-18 14:19:24] DONE  single_abnormal_b8 in 69 min (exit 0)
+2026-09-18 14:19:23    AUC abnormal  0.8248  95% CI [0.7244, 0.9137]
+2026-09-18 14:19:23    AUC mean      0.8248  95% CI [0.7244, 0.9137]
+[2026-09-18 14:19:24] START single_acl_b8
+[2026-09-18 16:28:18] DONE  single_acl_b8 in 128 min (exit 0)
+2026-09-18 16:28:17    AUC acl       0.9436  95% CI [0.8961, 0.9783]
+2026-09-18 16:28:17    AUC mean      0.9436  95% CI [0.8961, 0.9783]
+[2026-09-18 16:28:18] START single_meniscus_b8
+[2026-09-18 17:37:21] DONE  single_meniscus_b8 in 69 min (exit 0)
+2026-09-18 17:37:20    AUC meniscus  0.7902  95% CI [0.7031, 0.8677]
+2026-09-18 17:37:20    AUC mean      0.7902  95% CI [0.7031, 0.8677]
+[2026-09-18 17:37:21] START multitask_b1_lr8e-5
+[2026-09-18 18:48:17] DONE  multitask_b1_lr8e-5 in 70 min (exit 0)
+2026-09-18 18:48:16    AUC abnormal  0.7017  95% CI [0.5652, 0.8296]
+2026-09-18 18:48:16    AUC acl       0.4353  95% CI [0.3341, 0.5372]
+2026-09-18 18:48:16    AUC meniscus  0.6161  95% CI [0.5135, 0.7167]
+2026-09-18 18:48:16    AUC mean      0.5844  95% CI [0.5086, 0.6592]
+[2026-09-18 18:48:17] round 2 finished

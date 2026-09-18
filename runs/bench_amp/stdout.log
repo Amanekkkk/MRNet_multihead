@@ -1,0 +1,17 @@
+2026-09-17 21:32:43  Command: train.py --out_dir runs/bench_amp --workers 6 --tasks abnormal,acl,meniscus --max_epochs 2 --patience 100 --limit 60
+2026-09-17 21:32:43  Args: {'data_dir': '/home/amanali/Desktop/MRNet-v1.0', 'tasks': 'abnormal,acl,meniscus', 'out_dir': 'runs/bench_amp', 'max_epochs': 2, 'patience': 100, 'lr': 0.0001, 'min_lr': 1e-06, 'weight_decay': 1e-05, 'augment': True, 'pos_weight': True, 'no_amp': False, 'cudnn_benchmark': False, 'workers': 6, 'seed': 42, 'limit': 60, 'n_bootstrap': 2000}
+2026-09-17 21:32:43  Device: cuda (NVIDIA GeForce RTX 5060 Ti) | AMP: True | torch 2.9.1+cu128
+2026-09-17 21:32:43  Split mode: OFFICIAL (TEST PENDING) -- 1130 train exams split 85/15 into train/val; official validation images found but no label csvs, so the test evaluation is deferred to evaluate_test.py.
+2026-09-17 21:32:43  Stratification: {'train_vs_val': 'joint(abnormal,acl,meniscus)'} | limit=60 per split
+2026-09-17 21:32:43    train: n=  60 | positives: abnormal=48, acl=7, meniscus=25 | sagittal->coronal substitutions: 0
+2026-09-17 21:32:43    val  : n=  60 | positives: abnormal=52, acl=15, meniscus=22 | sagittal->coronal substitutions: 0
+2026-09-17 21:32:43    test : n=   0 | positives: abnormal=0, acl=0, meniscus=0 | sagittal->coronal substitutions: 0
+2026-09-17 21:32:43  Augmentation: {'max_rotate_deg': 10.0, 'max_translate_frac': 0.05, 'scale_range': [0.95, 1.05], 'contrast_factor_range': [0.9, 1.1], 'brightness_offset_range': [-0.1, 0.1], 'hflip_p': 0.5, 'hflip_rule': 'one decision per exam; axial & coronal flipped along the left-right image axis; sagittal not flipped in-plane (its left-right axis is the slice axis, and slice order is irrelevant under max-pooling)'}
+2026-09-17 21:32:43  pos_weight (neg/pos on train): {'abnormal': 0.25, 'acl': 7.571428571428571, 'meniscus': 1.4}
+2026-09-17 21:32:43  Model: shared ResNet50, tasks=['abnormal', 'acl', 'meniscus'] | params total=25,279,299 trainable=23,834,371 frozen=1,444,928
+2026-09-17 21:32:59  Epoch 001/2 | lr 1.00e-04 | train loss 1.0445 AUC 0.4568 [abn=0.595 acl=0.412 men=0.363] | val loss 1.2618 AUC 0.5365 [abn=0.493 acl=0.553 men=0.563] | 15s (train 10s) | peak mem 2597 MB
+2026-09-17 21:32:59    -> new best val mean AUC 0.5365 (epoch 1), checkpoint saved
+2026-09-17 21:33:13  Epoch 002/2 | lr 5.05e-05 | train loss 0.8313 AUC 0.5614 [abn=0.569 acl=0.528 men=0.587] | val loss 1.0505 AUC 0.5171 [abn=0.447 acl=0.535 men=0.569] | 14s (train 9s) | peak mem 2591 MB
+2026-09-17 21:33:13  Loading best checkpoint (epoch 1) for final evaluation
+2026-09-17 21:33:18  TEST evaluation deferred: official validation labels not on disk. Run `python evaluate_test.py runs/<name>` once valid-*.csv are added.
+2026-09-17 21:33:18  Wrote runs/bench_amp/results.json | total time 0.6 min

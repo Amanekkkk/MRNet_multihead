@@ -1,0 +1,11 @@
+[2026-09-17 21:31:31] run_experiments.sh started (pid 192215) in /home/amanali/Desktop/MRNet-v1.0
+[2026-09-17 21:31:31] python: /home/amanali/.pyenv/shims/python3 | torch 2.9.1+cu128 cuda True
+NVIDIA GeForce RTX 5060 Ti, 677 MiB, 8151 MiB, 1 %
+[2026-09-17 21:31:35] dataset mode: OFFICIAL, TEST PENDING (validation images found, label csvs missing)
+[2026-09-17 21:31:35] training/model selection proceed normally; test evaluation runs automatically at the
+[2026-09-17 21:31:35] end if valid-*.csv (or val-*.csv) have appeared, otherwise: python evaluate_test.py --all
+[2026-09-17 21:31:35] START bench_no_amp: /home/amanali/.pyenv/shims/python3 -u train.py --out_dir runs/bench_no_amp --tasks abnormal,acl,meniscus --max_epochs 2 --patience 100 --limit 60 --no_amp 
+[2026-09-17 21:32:41] DONE  bench_no_amp in 1 min
+[2026-09-17 21:32:41] START bench_amp: /home/amanali/.pyenv/shims/python3 -u train.py --out_dir runs/bench_amp --tasks abnormal,acl,meniscus --max_epochs 2 --patience 100 --limit 60 
+[2026-09-17 21:33:19] DONE  bench_amp in 0 min
+[2026-09-17 21:33:19] START multitask: /home/amanali/.pyenv/shims/python3 -u train.py --out_dir runs/multitask --tasks abnormal,acl,meniscus --max_epochs 100 --patience 20 
